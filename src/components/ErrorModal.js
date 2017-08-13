@@ -1,24 +1,22 @@
 import React from 'react';
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'react-bootstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'react-bootstrap';
 
-class ErrorModal extends React.Component {
-    render() {
-        return (
-            <Modal show={this.props.show}>
-                <ModalHeader>
-                    <h1>ERROR</h1>
-                </ModalHeader>
-                <ModalBody>
-                    <p>
-                        {this.props.message ? this.props.message : ''}
-                    </p>
-                </ModalBody>
-                <ModalFooter>
-                    <Button onClick={this.props.close}>Close</Button>
-                </ModalFooter>
-            </Modal>
-        )
-    }
-}
+const ErrorModal = function ErrorModal(props) {
+  return (
+    <Modal show={props.show}>
+      <ModalHeader>
+        <h1>ERROR</h1>
+      </ModalHeader>
+      <ModalBody>
+        <p>
+          {props.message ? props.message : ''}
+        </p>
+      </ModalBody>
+      <ModalFooter>
+        <Button onClick={props.close}>Close</Button>
+      </ModalFooter>
+    </Modal>
+  );
+};
 
 export default ErrorModal;

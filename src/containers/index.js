@@ -3,7 +3,7 @@ import Customer from './Customer';
 import Manager from './Manager';
 
 export {
-    App,
-    Customer,
-    Manager
-}
+  App,
+  Customer,
+  Manager,
+};
