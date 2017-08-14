@@ -5,16 +5,24 @@ class PointUsageModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      usage: 0,
+      point: 0,
+      memo: '',
     };
-    this.handleUsageChange = this.handleUsageChange.bind(this);
+    this.handlePointChange = this.handlePointChange.bind(this);
+    this.handleMemoChange = this.handleMemoChange.bind(this);
     this.handleUsage = this.handleUsage.bind(this);
   }
-  handleUsageChange(e) {
-    this.setState({ usage: Math.abs(parseInt(e.target.value, 10)) });
+  handlePointChange(e) {
+    this.setState({ point: Math.abs(parseInt(e.target.value, 10)) });
   }
   handleUsage() {
-    this.props.onUsage(this.state.usage);
+    this.props.onUsage({
+      point: this.state.point,
+      memo: this.state.memo,
+    });
+  }
+  handleMemoChange(e) {
+    this.setState({ memo: e.target.value });
   }
   render() {
     return (
@@ -31,8 +39,16 @@ class PointUsageModal extends React.Component {
                 <ControlLabel>포인트</ControlLabel>
                 <FormControl
                   type="number"
-                  onChange={this.handleUsageChange}
-                  value={this.state.usage}
+                  onChange={this.handlePointChange}
+                  value={this.state.point}
+                />
+              </FormGroup>
+              <FormGroup controlId="formControlsText">
+                <ControlLabel>메모</ControlLabel>
+                <FormControl
+                  type="text"
+                  onChange={this.handleMemoChange}
+                  value={this.state.memo}
                 />
               </FormGroup>
             </Form>

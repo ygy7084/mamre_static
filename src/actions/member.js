@@ -202,6 +202,7 @@ const pointUseRequest = function pointUseRequest(request) {
     phone: request.phone,
     usedPoint: request.usedPoint,
     datetime: new Date().getTime(),
+    memo:request.memo
   });
   return (dispatch) => {
     dispatch(pointUse());
@@ -212,6 +213,7 @@ const pointUseRequest = function pointUseRequest(request) {
         phone: request.phone,
         usedPoint: request.usedPoint,
         datetime: new Date().getTime(),
+        memo: request.memo,
       }),
     })
       .then((res) => {

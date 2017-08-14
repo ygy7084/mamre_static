@@ -65,13 +65,14 @@ class MemberModal extends React.Component {
 
     this.props.save(modified);
   }
-  handlePointUsage(point) {
+  handlePointUsage(data) {
     this.setState({
       PointUsageModal_show: false,
     });
     this.props.pointUsage({
       phone: this.props.member.phone,
-      usedPoint: point,
+      usedPoint: data.point,
+      memo: data.memo,
     });
   }
   historyListModalOn() {

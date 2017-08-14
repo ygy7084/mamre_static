@@ -21,6 +21,8 @@ class HistoryListModal extends React.Component {
     return (
       <Modal
         show={this.props.show}
+        style={styles.modal}
+        bsSize='large'
       >
         <ModalHeader>
           <h1>포인트 변경 내역</h1>
@@ -34,20 +36,21 @@ class HistoryListModal extends React.Component {
           >
             <thead>
               <tr>
-                <th style={styles.table_th}>날짜</th>
-                <th style={styles.table_th}>포인트</th>
-                <th style={styles.table_th}>내용</th>
+                <th style={styles.table_th_date}>날짜</th>
+                <th style={styles.table_th_point}>포인트</th>
+                <th style={styles.table_th_memo}>내용</th>
               </tr>
             </thead>
             <tbody>
               {
+
                 this.props.list && this.props.list.length ?
                 list.map((r, i) => {
                   const active = this.state.activePage;
                   const obj = r;
                   switch (obj.mode) {
                     case 0: obj.mode = '적립'; break;
-                    case 1: obj.mode = '사용'; break;
+                    case 1: obj.mode = obj.memo && obj.memo.length ? '사용 : '.concat(obj.memo) : '사용'; break;
                     case 2: obj.mode = '수정'; break;
                   }
                   if (i >= (active - 1) * 10 && i < active * 10) {
@@ -98,6 +101,9 @@ HistoryListModal.defaultProps = {
 };
 
 const styles = {
+  modal: {
+    width: '100%',
+  },
   title: {
     color: 'black',
     textAlign: 'center',
@@ -112,9 +118,17 @@ const styles = {
     textAlign: 'center',
     fontSize: '1.5rem',
   },
-  table_th: {
+  table_th_date: {
     textAlign: 'center',
-
+    width : '35%'
+  },
+  table_th_point: {
+    textAlign: 'center',
+    width : '15%'
+  },
+  table_th_memo: {
+    textAlign: 'center',
+    width : '50%'
   },
   tabel_tr_td: {
     padding: '1rem',
